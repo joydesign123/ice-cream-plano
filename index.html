@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Scoop Tour — 10 Stops, One Sweet Tooth</title>
+<meta name="description" content="A self-guided ice cream tour of Plano, Texas. Ten stops, real addresses, real hours, zero guesswork.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="#top" class="wordmark">Plano<span>Scoop</span>Tour</a>
+    <nav class="chipnav" id="chipnav" aria-label="Filter stops by style">
+      <button class="chip is-active" data-filter="all">All Stops</button>
+      <button class="chip" data-filter="soft-serve">Soft Serve</button>
+      <button class="chip" data-filter="gelato">Gelato</button>
+      <button class="chip" data-filter="homemade">Homemade</button>
+      <button class="chip" data-filter="asian-inspired">Asian-Inspired</button>
+      <button class="chip" data-filter="artisan">Artisan</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">A self-guided dessert crawl</p>
+      <h1>10 stops.<br>One sweet tooth.<br><span class="hero-accent">Zero regrets.</span></h1>
+      <p class="hero-sub">Every scoop shop, creamery, and gelateria worth driving across Plano for — with real addresses, real hours, and honest notes on what to order.</p>
+      <div class="hero-stats">
+        <div class="stat"><strong id="stat-count">10</strong><span>stops on the route</span></div>
+        <div class="stat"><strong>4.7</strong><span>avg. rating</span></div>
+        <div class="stat"><strong>~18 mi</strong><span>full loop</span></div>
+      </div>
+      <a href="#route" class="cta">Start the tour ↓</a>
+    </div>
+    <div class="hero-lid" aria-hidden="true"></div>
+  </section>
+
+  <nav class="routestrip" id="route" aria-label="Jump to a stop">
+    <div class="wrap routestrip-inner" id="routestrip-track"></div>
+  </nav>
+
+  <section class="stops wrap" id="stops" aria-live="polite">
+    <!-- cards injected by script.js -->
+  </section>
+
+  <section class="tourtip wrap">
+    <div class="tourtip-card">
+      <h2>How to actually do this tour</h2>
+      <p>Pick three or four stops in the same corner of town rather than chasing all ten in a day — Plano is spread out and your ice cream will melt faster than you'll drive. Weeknights after 7pm tend to be quietest. Most of these shops let you sample flavors before you commit, so ask.</p>
+      <button class="shuffle-btn" id="shuffleBtn">🔀 Shuffle my route</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="wrap sitefoot-inner">
+    <p>Built for Plano, Texas ice cream people. Hours and ratings sourced from public listings and may drift — call ahead on holidays.</p>
+    <p class="fineprint">Not affiliated with any shop listed. Tap "Get directions" to open Google Maps.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

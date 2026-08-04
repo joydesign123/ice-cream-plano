@@ -1,0 +1,400 @@
+/* ============================================
+   Plano Scoop Tour — design tokens
+   Concept: each stop is a "pint lid," color-coded
+   by ice cream style, laid out like a tour route.
+   ============================================ */
+
+:root {
+  --navy: #16213E;
+  --navy-2: #1E2C52;
+  --navy-3: #263566;
+  --vanilla: #FFF3DA;
+  --ink: #0F1730;
+  --muted: #AEBADB;
+
+  --soft-serve: #EF4A7B;
+  --gelato: #6C8CFF;
+  --homemade: #F5A623;
+  --asian: #7FCB93;
+  --artisan: #A97BFF;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--vanilla);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+a { color: inherit; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(22, 33, 62, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 243, 218, 0.12);
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--vanilla);
+  letter-spacing: 0.01em;
+}
+.wordmark span { color: var(--soft-serve); }
+
+.chipnav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid rgba(255, 243, 218, 0.22);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.chip:hover { border-color: rgba(255, 243, 218, 0.5); color: var(--vanilla); }
+.chip:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 2px; }
+.chip.is-active {
+  background: var(--vanilla);
+  color: var(--ink);
+  border-color: var(--vanilla);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 72px 0 56px;
+  overflow: hidden;
+}
+
+.hero-inner { position: relative; z-index: 2; max-width: 640px; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--homemade);
+  margin: 0 0 14px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+
+.hero-accent { color: var(--soft-serve); }
+
+.hero-sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.stat { display: flex; flex-direction: column; }
+.stat strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--vanilla);
+}
+.stat span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.cta {
+  display: inline-block;
+  background: var(--soft-serve);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 8px 24px rgba(239, 74, 123, 0.28);
+}
+.cta:hover { transform: translateY(-2px); }
+.cta:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 3px; }
+
+/* decorative pint lid, purely CSS, sits behind hero text on wide screens */
+.hero-lid {
+  position: absolute;
+  right: -120px;
+  top: -80px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.10), transparent 45%),
+    conic-gradient(from 210deg, var(--soft-serve), var(--homemade), var(--asian), var(--gelato), var(--artisan), var(--soft-serve));
+  opacity: 0.18;
+  z-index: 1;
+}
+@media (max-width: 760px) { .hero-lid { display: none; } }
+
+/* ---------- Route strip (jump nav) ---------- */
+.routestrip {
+  border-top: 1px solid rgba(255, 243, 218, 0.12);
+  border-bottom: 1px solid rgba(255, 243, 218, 0.12);
+  background: var(--navy-2);
+  position: sticky;
+  top: 61px;
+  z-index: 15;
+}
+
+.routestrip-inner {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px 24px;
+  scrollbar-width: thin;
+}
+
+.route-dot {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,243,218,0.15);
+  border-radius: 999px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.route-dot:hover { color: var(--vanilla); border-color: var(--vanilla); }
+.route-dot:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 2px; }
+
+/* ---------- Stops ---------- */
+.stops {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 48px 24px 20px;
+}
+
+.stopcard {
+  scroll-margin-top: 130px;
+  background: var(--navy-2);
+  border: 1px solid rgba(255,243,218,0.10);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 24px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.stopcard[hidden] { display: none; }
+
+.lid {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ink);
+  box-shadow: inset 0 -6px 0 rgba(0,0,0,0.12);
+}
+
+.stop-body { min-width: 0; }
+
+.stop-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.stop-head h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.rating {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--homemade);
+  white-space: nowrap;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: 8px 8px 0 0;
+  color: var(--ink);
+}
+
+.blurb {
+  color: var(--muted);
+  margin: 14px 0;
+  max-width: 60ch;
+}
+
+.stop-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.stop-meta strong { color: var(--vanilla); font-weight: 500; }
+
+.status {
+  font-weight: 600;
+}
+.status.open { color: var(--asian); }
+.status.closed { color: var(--soft-serve); }
+
+.stop-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stop-actions a, .stop-actions button {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,243,218,0.25);
+  background: transparent;
+  color: var(--vanilla);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.stop-actions a:hover, .stop-actions button:hover { border-color: var(--vanilla); }
+.stop-actions a:focus-visible, .stop-actions button:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 2px; }
+
+.stop-actions .primary {
+  background: var(--vanilla);
+  color: var(--ink);
+  border-color: var(--vanilla);
+}
+
+@media (max-width: 560px) {
+  .stopcard { grid-template-columns: 1fr; }
+  .lid { width: 56px; height: 56px; font-size: 1.1rem; }
+}
+
+/* ---------- Tour tip ---------- */
+.tourtip { padding: 40px 24px 80px; }
+.tourtip-card {
+  background: var(--navy-3);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  border: 1px solid rgba(255,243,218,0.10);
+}
+.tourtip-card h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+.tourtip-card p { color: var(--muted); max-width: 62ch; }
+
+.shuffle-btn {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--mango, var(--homemade));
+  color: var(--ink);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.shuffle-btn:hover { transform: translateY(-2px); }
+.shuffle-btn:focus-visible { outline: 2px solid var(--vanilla); outline-offset: 3px; }
+
+/* ---------- Footer ---------- */
+.sitefoot {
+  border-top: 1px solid rgba(255,243,218,0.12);
+  padding: 28px 0 40px;
+}
+.sitefoot-inner p {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 0 0 6px;
+  max-width: 70ch;
+}
+.fineprint { opacity: 0.7; }
