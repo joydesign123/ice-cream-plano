@@ -3,71 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plano Scoop Tour — 10 Stops, One Sweet Tooth</title>
-<meta name="description" content="A self-guided ice cream tour of Plano, Texas. Ten stops, real addresses, real hours, zero guesswork.">
+<title>I SCREAM FOR ICE CREAM — Every Ice Cream Shop in Plano, TX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="wrap topbar-inner">
-    <a href="#top" class="wordmark">Plano<span>Scoop</span>Tour</a>
-    <nav class="chipnav" id="chipnav" aria-label="Filter stops by style">
-      <button class="chip is-active" data-filter="all">All Stops</button>
-      <button class="chip" data-filter="soft-serve">Soft Serve</button>
-      <button class="chip" data-filter="gelato">Gelato</button>
-      <button class="chip" data-filter="homemade">Homemade</button>
-      <button class="chip" data-filter="asian-inspired">Asian-Inspired</button>
-      <button class="chip" data-filter="artisan">Artisan</button>
+  <header class="hero">
+    <nav class="hero-nav">
+      <span class="wordmark">Plano Scoops</span>
     </nav>
-  </div>
-</header>
+    <div class="hero-content">
+      <h1>I SCREAM FOR ICE CREAM</h1>
+      <p class="tagline">A running list of the city's ice cream and gelato spots — real places, real ratings.</p>
+    </div>
 
-<main id="top">
+    <svg class="hero-tub" viewBox="0 0 260 300" aria-hidden="true">
+      <ellipse cx="130" cy="272" rx="90" ry="14" fill="#1B2A55" opacity="0.12"/>
+      <rect x="45" y="150" width="170" height="120" rx="14" fill="#FFF6E9"/>
+      <rect x="45" y="150" width="24.3" height="120" fill="#F0553E"/>
+      <rect x="93.6" y="150" width="24.3" height="120" fill="#F4C6CE"/>
+      <rect x="142.2" y="150" width="24.3" height="120" fill="#F0553E"/>
+      <rect x="190.8" y="150" width="24.3" height="120" fill="#F4C6CE"/>
+      <rect x="45" y="150" width="170" height="16" rx="8" fill="#FFF6E9"/>
+      <circle cx="130" cy="215" r="46" fill="#FFF6E9"/>
+      <text x="130" y="207" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="20" fill="#1B2A55">Plano</text>
+      <text x="130" y="230" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="20" fill="#1B2A55">Scoops</text>
+      <ellipse cx="95" cy="140" rx="52" ry="44" fill="#F4B99A"/>
+      <ellipse cx="170" cy="132" rx="46" ry="40" fill="#A9E4C4"/>
+      <path d="M170 100 l14 -34 -22 8Z" fill="#A9E4C4"/>
+      <circle cx="156" cy="118" r="2.6" fill="#FFF6E9"/>
+      <circle cx="178" cy="112" r="2.6" fill="#FFF6E9"/>
+      <circle cx="164" cy="140" r="2.6" fill="#FFF6E9"/>
+      <circle cx="186" cy="132" r="2.6" fill="#FFF6E9"/>
+      <path d="M78 108 Q95 92 112 108 Q98 122 86 128 Q75 120 78 108Z" fill="#F3B8C4"/>
+    </svg>
+  </header>
 
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <p class="eyebrow">A self-guided dessert crawl</p>
-      <h1>10 stops.<br>One sweet tooth.<br><span class="hero-accent">Zero regrets.</span></h1>
-      <p class="hero-sub">Every scoop shop, creamery, and gelateria worth driving across Plano for — with real addresses, real hours, and honest notes on what to order.</p>
-      <div class="hero-stats">
-        <div class="stat"><strong id="stat-count">10</strong><span>stops on the route</span></div>
-        <div class="stat"><strong>4.7</strong><span>avg. rating</span></div>
-        <div class="stat"><strong>~18 mi</strong><span>full loop</span></div>
+
+  <main>
+    <section class="controls">
+      <p class="result-count"><span id="shop-count">10</span> shops listed</p>
+      <div class="sort-buttons">
+        <button class="sort-btn is-active" data-sort="rating">Top rated</button>
+        <button class="sort-btn" data-sort="name">A–Z</button>
       </div>
-      <a href="#route" class="cta">Start the tour ↓</a>
-    </div>
-    <div class="hero-lid" aria-hidden="true"></div>
-  </section>
+    </section>
 
-  <nav class="routestrip" id="route" aria-label="Jump to a stop">
-    <div class="wrap routestrip-inner" id="routestrip-track"></div>
-  </nav>
+    <section class="shop-grid" id="shop-grid">
 
-  <section class="stops wrap" id="stops" aria-live="polite">
-    <!-- cards injected by script.js -->
-  </section>
+      <article class="shop-card" data-rating="4.9" data-name="Botolino Gelato Artigianale">
+        <div class="shop-top">
+          <h2>Botolino Gelato Artigianale</h2>
+          <span class="rating">★ 4.9</span>
+        </div>
+        <p class="vibe">Italian-style gelato with tastings offered before you order; known for coffee flavors and affogato.</p>
+        <p class="addr">2201 Preston Rd Ste O, Plano, TX 75093</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Botolino+Gelato+Artigianale+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
 
-  <section class="tourtip wrap">
-    <div class="tourtip-card">
-      <h2>How to actually do this tour</h2>
-      <p>Pick three or four stops in the same corner of town rather than chasing all ten in a day — Plano is spread out and your ice cream will melt faster than you'll drive. Weeknights after 7pm tend to be quietest. Most of these shops let you sample flavors before you commit, so ask.</p>
-      <button class="shuffle-btn" id="shuffleBtn">🔀 Shuffle my route</button>
-    </div>
-  </section>
+      <article class="shop-card" data-rating="4.8" data-name="Local Creamery">
+        <div class="shop-top">
+          <h2>Local Creamery</h2>
+          <span class="rating">★ 4.8</span>
+        </div>
+        <p class="vibe">Small-batch ice cream with several dairy-free flavors; regulars love the cookies and cream.</p>
+        <p class="addr">5805 Preston Rd #598, Plano, TX 75093</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Local+Creamery+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
 
-</main>
+      <article class="shop-card" data-rating="4.8" data-name="Handel's Ice Cream">
+        <div class="shop-top">
+          <h2>Handel's Ice Cream</h2>
+          <span class="rating">★ 4.8</span>
+        </div>
+        <p class="vibe">Artisan ice cream chain with generous mix-ins; samples offered so you can try before you choose.</p>
+        <p class="addr">4200 Legacy Dr, Plano, TX 75024</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Handel%27s+Ice+Cream+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
 
-<footer class="sitefoot">
-  <div class="wrap sitefoot-inner">
-    <p>Built for Plano, Texas ice cream people. Hours and ratings sourced from public listings and may drift — call ahead on holidays.</p>
-    <p class="fineprint">Not affiliated with any shop listed. Tap "Get directions" to open Google Maps.</p>
-  </div>
-</footer>
+      <article class="shop-card" data-rating="4.8" data-name="Pappalecco">
+        <div class="shop-top">
+          <h2>Pappalecco</h2>
+          <span class="rating">★ 4.8</span>
+        </div>
+        <p class="vibe">A cafe that doubles as a gelato spot — cozy, good for coffee first, gelato second.</p>
+        <p class="addr">1009 14th St Unit 600, Plano, TX 75074</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Pappalecco+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
 
-<script src="script.js"></script>
+      <article class="shop-card" data-rating="4.7" data-name="Tongue in Cheek Ice Cream">
+        <div class="shop-top">
+          <h2>Tongue in Cheek Ice Cream</h2>
+          <span class="rating">★ 4.7</span>
+        </div>
+        <p class="vibe">Everything made from scratch on site; known for swing seating and a caramel crack flavor.</p>
+        <p class="addr">3505 E Park Blvd #300, Plano, TX 75074</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Tongue+in+Cheek+Ice+Cream+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+      <article class="shop-card" data-rating="4.6" data-name="Sloan's Ice Cream">
+        <div class="shop-top">
+          <h2>Sloan's Ice Cream</h2>
+          <span class="rating">★ 4.6</span>
+        </div>
+        <p class="vibe">Part ice cream shop, part old-fashioned candy store, with a small toy corner for kids.</p>
+        <p class="addr">8315 Preston Rd #300, Plano, TX 75024</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Sloan%27s+Ice+Cream+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+      <article class="shop-card" data-rating="4.6" data-name="Skyblue Gelato Cone">
+        <div class="shop-top">
+          <h2>Skyblue Gelato Cone</h2>
+          <span class="rating">★ 4.6</span>
+        </div>
+        <p class="vibe">Turkish-style gelato with unusual flavors like Ferrero Rocher and rose; several dairy-free options.</p>
+        <p class="addr">1005 E 15th St Ste 101, Plano, TX 75074</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Skyblue+Gelato+Cone+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+      <article class="shop-card" data-rating="4.5" data-name="Henry's Homemade Ice Cream">
+        <div class="shop-top">
+          <h2>Henry's Homemade Ice Cream</h2>
+          <span class="rating">★ 4.5</span>
+        </div>
+        <p class="vibe">A Plano staple for decades; classic and inventive flavors, plus custom ice cream cakes.</p>
+        <p class="addr">3100 Independence Pkwy, Plano, TX 75075</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Henry%27s+Homemade+Ice+Cream+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+      <article class="shop-card" data-rating="4.4" data-name="Crispy Cones">
+        <div class="shop-top">
+          <h2>Crispy Cones</h2>
+          <span class="rating">★ 4.4</span>
+        </div>
+        <p class="vibe">Soft serve in warm, baked cones with fully customizable toppings and rotating signature flavors.</p>
+        <p class="addr">9613 Coit Rd #108, Plano, TX 75024</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Crispy+Cones+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+      <article class="shop-card" data-rating="4.4" data-name="Ked's Ice Cream, Waffles & Crepes">
+        <div class="shop-top">
+          <h2>Ked's Ice Cream, Waffles &amp; Crepes</h2>
+          <span class="rating">★ 4.4</span>
+        </div>
+        <p class="vibe">Late-night dessert spot known for falooda and crepes alongside a long list of ice cream flavors.</p>
+        <p class="addr">6205 Coit Rd #344, Plano, TX 75024</p>
+        <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Ked%27s+Ice+Cream+Waffles+Crepes+Plano+TX" target="_blank" rel="noopener">Get directions →</a>
+      </article>
+
+    </section>
+
+    <p class="disclaimer">Ratings and details pulled from public listings as of August 2026 — always worth double-checking hours before you head out.</p>
+  </main>
+
+  <footer class="site-footer">
+    <span>Plano Scoops — an unofficial fan-made guide</span>
+  </footer>
+
 </body>
 </html>
